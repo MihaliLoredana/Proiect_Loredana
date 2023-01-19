@@ -1,0 +1,41 @@
+﻿@page
+@model Proiect_Loredana.Pages.Acquisitions.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Acquisition</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Acquisition.ClientID" class="control-label"></label>
+                <select asp-for="Acquisition.ClientID" class ="form-control" asp-items="ViewBag.ClientID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Acquisition.GameID" class="control-label"></label>
+                <select asp-for="Acquisition.GameID" class ="form-control" asp-items="ViewBag.GameID"></select>
+              <div class="form-group">
+                <label asp-for="Acquisition.ReservationDate" class="control-label"></label>
+                <input asp-for="Acquisition.ReservationDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" readonly/>
+                <span asp-validation-for="Acquisition.ReservationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
